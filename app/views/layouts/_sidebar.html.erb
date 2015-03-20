@@ -1,0 +1,13 @@
+<div id="sidebar" class="col-sm-2 sidebar">
+	<!-- sidebar content muestra en el titulo como el nombre del controlador actual esto esta seteado en aplication_controller -->
+	<ul class="nav nav-sidebar">
+		<li class=<%= @controllerName == "User" ? "active" : "" %>><%= link_to 'Usuarios', users_path %></li>
+		<li class=<%= @controllerName == "Group" ? "active" : "" %>><%= link_to 'Grupos', groups_path%></li>
+		<li class=<%= @controllerName == "Toy" ? "active" : "" %>><%= link_to 'Juguetes', toys_path%></li>
+		<li class=<%= @controllerName == "Cymbal" ? "active" : "" %>><%= link_to 'Platillos', cymbals_path%></li>
+		<li class=<%= @controllerName == "Task" ? "active" : "" %>><%= link_to 'Tareas', tasks_path%></li>
+		<li class=<%= @controllerName == "Cancan" ? "active" : "" %>><%= link_to 'Posts', posts_path%></li>
+		<li class=<%= @controllerName == "Party" ? "active" : "" %>><%= link_to 'Parties', parties_path%></li>
+		<li class=<%= @controllerName == "Applicanr" ? "active" : "" %>><%= link_to 'Appicants', applicants_path%></li>
+	</ul>
+</div>

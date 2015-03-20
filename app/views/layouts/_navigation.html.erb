@@ -1,0 +1,19 @@
+<nav class="navbar navbar-default" role="navigation" >
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">
+				<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+				Aplicacion de Pruebas Rails 4.2
+			</a>
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<% if #user_signed_in? %>
+				<p class="navbar-text"> Hola <%= current_user.name %>, estas logeado como: <%= current_user.role %> | <%= link_to("Log out", destroy_user_session_path, method: :delete) %></p>				
+				<% else %>
+				<p class="navbar-text"><%= #link_to "Sign in", new_user_session_path %></p>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</nav>

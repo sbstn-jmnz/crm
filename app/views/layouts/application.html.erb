@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%=@controllerName%></title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+</head>
+<style>
+body {
+	background-color: #3F3E40;
+}
+</style>
+<body>
+	
+	<div id="main-container" class="container-fluid">
+		<%= render 'layouts/navbar'%>
+		<div class="row">
+			<a href=""></a>
+			<%= yield %>
+ 		</div>
+ 		<%= render 'layouts/footer'%>	
+	</div>
+
+</body>
+</html>

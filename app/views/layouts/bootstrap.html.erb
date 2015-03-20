@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= @controllerName %></title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</head>
+
+<body>
+
+	<div id="main-container" class="container-fluid">
+			<%= render 'layouts/navigation'%>
+		<div class="row">
+			<%= render 'layouts/sidebar'%>
+			<div id="content" class="col-sm-10">
+				<%= render 'layouts/tabs'%>
+				<%= yield %>
+			</div>
+		</div>
+	</div>	
+</body>
+</html>
+
