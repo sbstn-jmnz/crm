@@ -27,16 +27,18 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 #<-- Otras gemas -->
 
-#Gemas para Devise y ActiveAdmin
+#Gemas para Devise, ActiveAdmin y CanCan
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
-
+gem 'cancancan', '~> 1.10'
+#gema para impotar CSV
+gem 'active_admin_importable'
 
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
+  gem 'quiet_assets'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 

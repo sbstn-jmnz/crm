@@ -4,9 +4,17 @@ class Applicant < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :authentication_keys => [:signin] #:confirmable
-   attr_accessor :signin
+  
+  attr_accessor :signin
 
-  	validates :name,:presence => true,:uniqueness => {:case_sensitive => false}
+  has_many :tasks
+  belongs_to :condition
+  belongs_to :admin_user
+
+ 	validates :name,:presence => true,:uniqueness => {:case_sensitive => false}
+
+  after_create { |admin| admin.send_reset_password_instructions }
+
 
    def self.find_for_database_authentication(warden_conditions)
       conditions = warden_conditions.dup
@@ -15,6 +23,11 @@ class Applicant < ActiveRecord::Base
       else
         where(conditions.to_h).first
       end
+    end
+ 
+ 
+    def password_required?
+      new_record? ? false : super
     end
 
 end
