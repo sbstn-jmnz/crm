@@ -1,4 +1,5 @@
 ActiveAdmin.setup do |config|
+  
   # == Site Title
   #
   # Set the title that is displayed on the main layout
@@ -186,8 +187,9 @@ ActiveAdmin.setup do |config|
                   :url    =>  proc{  edit_admin_admin_user_path(current_active_admin_user) }  ,#link_to current_active_admin_user,
                   :id     => 'current_user',
                   :if     => proc{ current_active_admin_user? }
-         admin.add_logout_button_to_menu menu
-       end
+         admin.add_current_user_to_menu  menu
+         admin.add_logout_button_to_menu menu         
+        end
      end
   #
   # If you wanted to add a static menu item to the default menu provided:

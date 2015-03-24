@@ -1,8 +1,52 @@
+conditions = [
+['Interesado','primer estado, solo se tiene nombre y correo','ApplicantCondition'],
+['Congelado','El postulante tiene mucho frio','ApplicantCondition'],
+['Activo','El postulante tiene algun proceso de postulacion','ApplicantCondition'],
+['Activa','Postulacion en proceso','PostulationCondition'],
+['Pagada','Postulacion pagada','PostulationCondition'],
+['Facturada','Postulacion facturada','PostulationCondition'],
+['Planificada','Version planificada','VersionCondition'],
+['Activa','Version activa','VersionCondition'],
+['Cerrada','Version Cerrada','VersionCondition']
+]
 
-Program.create!(title:'MBA Weekend', description: 'MBA para ejecutivos')
-Program.create!(title:'MFA', description: 'Master en finanzas')
-Program.create!(title:'MTI', description: 'Master en TI')
-Program.create!(title:'MBA Full Time', description: 'MBA a tiempo completo')
+Condition.delete_all
+conditions.each do |name, description, type|
+	Condition.create!(name: name, description: description, type: type)
+end
 
-AdminUser.create!(email: 'admin@admin.com', password: 'password', role: 'admin')
+applicants = [['sbstn','sbstn@jmnz.cl','password'],
+['ruyard','ruyard@fuster.cl', 'password'],
+['maca','maca@standen.cl','password']]
+
+Applicant.delete_all
+conditions= Condition.where("type = 'ApplicantCondition'")
+applicants.each do |name, email, password|
+n = 0
+condition_id = conditions.offset(n).first.id
+	Applicant.create!(name: name, email: email, password: password, condition_id: condition_id)
+n = n+1
+end
+
+admin_users = [
+['admin@admin.com','password','admin'],
+['sbstn@jmnz.com','password', 'admin'],
+['digo@arias.com','password','admin'],
+['user@admin.com','password','user']]
+
+AdminUser.delete_all
+admin_users.each do |email, password, role|
+	AdminUser.create!(email: email, password: password, role: role)
+end
+
+program_list = [
+['MBA Weekend','MBA para ejecutivos'],
+['MFA','Master en finanzas'],
+['MTI','Master en TI'],
+['MBA Full Time','MBA a tiempo completo']] 
+
+Program.delete_all
+program_list.each do |title, description|
+	Program.create!(title: title, description: description)
+end
 

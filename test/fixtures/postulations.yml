@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  admin_user_id: 
+  applicant_id: 
+  version_id: 
+  condition_id: 
+
+two:
+  admin_user_id: 
+  applicant_id: 
+  version_id: 
+  condition_id: 

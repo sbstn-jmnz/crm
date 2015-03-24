@@ -8,8 +8,8 @@ class Applicant < ActiveRecord::Base
   attr_accessor :signin
 
   has_many :tasks
-  belongs_to :condition
   belongs_to :admin_user
+  belongs_to :condition, class_name: "PostulationCondition"
 
  	validates :name,:presence => true,:uniqueness => {:case_sensitive => false}
 

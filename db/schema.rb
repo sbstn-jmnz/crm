@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150320212508) do
+ActiveRecord::Schema.define(version: 20150322203757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20150320212508) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "condition_id"
   end
 
   add_index "applicants", ["email"], name: "index_applicants_on_email", unique: true, using: :btree
@@ -77,6 +78,20 @@ ActiveRecord::Schema.define(version: 20150320212508) do
     t.string   "type"
   end
 
+  create_table "postulations", force: :cascade do |t|
+    t.integer  "admin_user_id"
+    t.integer  "applicant_id"
+    t.integer  "version_id"
+    t.integer  "condition_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "postulations", ["admin_user_id"], name: "index_postulations_on_admin_user_id", using: :btree
+  add_index "postulations", ["applicant_id"], name: "index_postulations_on_applicant_id", using: :btree
+  add_index "postulations", ["condition_id"], name: "index_postulations_on_condition_id", using: :btree
+  add_index "postulations", ["version_id"], name: "index_postulations_on_version_id", using: :btree
+
   create_table "programs", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -85,13 +100,30 @@ ActiveRecord::Schema.define(version: 20150320212508) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer  "applicant_id"
+    t.integer  "postulation_id"
     t.integer  "admin_user_id"
     t.string   "title"
     t.boolean  "is_done"
     t.date     "due_date"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "versions", force: :cascade do |t|
+    t.integer  "program_id"
+    t.datetime "starting_date"
+    t.datetime "ending_date"
+    t.integer  "condition_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
 
+  add_index "versions", ["condition_id"], name: "index_versions_on_condition_id", using: :btree
+
+  add_foreign_key "applicants", "conditions"
+  add_foreign_key "postulations", "admin_users"
+  add_foreign_key "postulations", "applicants"
+  add_foreign_key "postulations", "conditions"
+  add_foreign_key "postulations", "versions"
+  add_foreign_key "versions", "conditions"
 end

@@ -1,11 +1,7 @@
 ActiveAdmin.register Task do
-
-
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  permit_params :applicant_id, :admin_user_id, :title, :due_date, :is_done
-  #
+  permit_params :postulation_id, :admin_user_id, :title, :due_date, :is_done
+  menu label: "Tareas"
+  
   scope :all, :default => true
   scope :due_this_week do |tasks|
     tasks.where('due_date > ? and due_date < ?', Time.now, 1.week.from_now)
@@ -45,15 +41,17 @@ ActiveAdmin.register Task do
     end
   end
 
-
  index do
  selectable_column
   column :title do |title|
     link_to title.title, admin_task_path(title)
      end
   column :admin_user    
+  column :applicant
   column :is_done
   column :created_at
   actions
   end
+
+  filter :postulation_id, as: :select, collection: proc{(Postulation.all).map{|c|[c.name,c.id]}}
 end

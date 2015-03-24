@@ -1,7 +1,5 @@
 class Condition < ActiveRecord::Base
 	validates :name, :presence => true
 	validates :description, :presence => true
-
-has_many :applicants
-
+	validates :type, :presence => true
 end
