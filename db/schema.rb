@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322203757) do
+ActiveRecord::Schema.define(version: 20150325185401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,26 @@ ActiveRecord::Schema.define(version: 20150322203757) do
     t.string   "type"
   end
 
+  create_table "languages", force: :cascade do |t|
+    t.integer  "postulation_detail_id"
+    t.string   "name"
+    t.string   "written_level"
+    t.string   "spoken_level"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "languages", ["postulation_detail_id"], name: "index_languages_on_postulation_detail_id", using: :btree
+
+  create_table "postulation_details", force: :cascade do |t|
+    t.integer  "postulation_id"
+    t.text     "motivation"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "postulation_details", ["postulation_id"], name: "index_postulation_details_on_postulation_id", using: :btree
+
   create_table "postulations", force: :cascade do |t|
     t.integer  "admin_user_id"
     t.integer  "applicant_id"
@@ -122,6 +142,8 @@ ActiveRecord::Schema.define(version: 20150322203757) do
   add_index "versions", ["condition_id"], name: "index_versions_on_condition_id", using: :btree
 
   add_foreign_key "applicants", "conditions"
+  add_foreign_key "languages", "postulation_details"
+  add_foreign_key "postulation_details", "postulations"
   add_foreign_key "postulations", "admin_users"
   add_foreign_key "postulations", "applicants"
   add_foreign_key "postulations", "conditions"
