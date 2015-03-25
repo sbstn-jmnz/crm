@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   devise_for :applicants , controllers: { sessions: "applicants/sessions", registrations: "applicants/registrations" }## aca se agregan los controladores que se modificaron, 
 
   resources :programs
+  resources :postulations
   root 'statics#index'
   
   # The priority is based upon order of creation: first created -> highest priority.

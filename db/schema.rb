@@ -120,13 +120,13 @@ ActiveRecord::Schema.define(version: 20150325185401) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer  "postulation_id"
+    t.integer  "applicant_id"
     t.integer  "admin_user_id"
     t.string   "title"
     t.boolean  "is_done"
     t.date     "due_date"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "versions", force: :cascade do |t|

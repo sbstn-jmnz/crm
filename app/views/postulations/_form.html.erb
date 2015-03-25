@@ -1,0 +1,9 @@
+<%= form_for(@postulation) do |f| %>
+	<%= f.fields_for :postulation_details do |pd| %>
+		<%= pd.label :motivation %>
+		<%= pd.text_area :motivation %>
+	<% end %>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>
