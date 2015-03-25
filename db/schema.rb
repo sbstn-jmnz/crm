@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 20150322203757) do
 
   create_table "versions", force: :cascade do |t|
     t.integer  "program_id"
+    t.integer  "supply"
     t.datetime "starting_date"
     t.datetime "ending_date"
     t.integer  "condition_id"
