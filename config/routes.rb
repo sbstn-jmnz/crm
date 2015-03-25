@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :programs
   resources :postulations
+  resources :postulation_details
   root 'statics#index'
   
   # The priority is based upon order of creation: first created -> highest priority.

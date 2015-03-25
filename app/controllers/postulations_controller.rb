@@ -1,7 +1,6 @@
 class PostulationsController < ApplicationController
 	before_action :set_postulation, only: [:show, :edit, :update, :destroy]
 	layout false
-
 	def new
 		@postulation = Postulation.new
 		@postulation_details = @postulation.postulation_details.build
@@ -9,7 +8,8 @@ class PostulationsController < ApplicationController
 
 	def create
 		@postulation = Postulation.new(postulation_params)
-		redirect_to root_path
+		@postulation.save
+		redirect_to new_postulation_detail_path
 	end
 
 	private

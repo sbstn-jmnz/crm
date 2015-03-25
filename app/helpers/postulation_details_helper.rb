@@ -1,0 +1,2 @@
+module PostulationDetailsHelper
+end

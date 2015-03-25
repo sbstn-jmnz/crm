@@ -1,0 +1,10 @@
+<%= form_for(@postulation_detail) do |f| %>
+	<%= f.fields_for :languages do |builder| %>
+		<%= render 'language_fields', f: builder %>
+	<% end %>
+	<%= link_to_add_fields "Agregar idioma", f, :languages %>
+
+	<div class="action">
+		<%= f.submit %>
+	</div>
+<% end %>
