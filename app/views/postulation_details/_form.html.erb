@@ -1,10 +1,12 @@
 <%= form_for(@postulation_detail) do |f| %>
+	<div class="input_fields_wrap">
 	<%= f.fields_for :languages do |builder| %>
 		<%= render 'language_fields', f: builder %>
 	<% end %>
 	<%= link_to_add_fields "Agregar idioma", f, :languages %>
 
 	<div class="action">
-		<%= f.submit %>
+		<%= f.submit "Agregar idioma", class: "add_field_button" %>
+	</div>
 	</div>
 <% end %>

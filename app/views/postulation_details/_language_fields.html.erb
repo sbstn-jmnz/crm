@@ -2,5 +2,17 @@
 	<p>
 		<%= f.label :name %>
 		<%= f.text_field :name %>
+		<%= f.label :written_level%>
+		<%= f.select :written_level, options_for_select([["Basico", "Basico"], ["Intermedio", "Intermedio"], ["Avanzado", "Avanzado"], ["Nativo", "Nativo"]]) %>
+		<%= f.label :spoken_level %>
+		<%= f.select :spoken_level, options_for_select([["Basico", "Basico"], ["Intermedio", "Intermedio"], ["Avanzado", "Avanzado"], ["Nativo", "Nativo"]]) %>
 	</p>
 </div>
+
+<script >
+	function add_fields(link, association, content){
+		var new_id = new Date().getTime();
+		var regexp = new RegExp("new_" + association, "g");
+		$(link).parent().before(content.replace(regexp, new_id));
+	}
+</script>

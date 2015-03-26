@@ -18,7 +18,6 @@
 //= require_tree .
 
 function add_fields(link, association, content){
-	alert("hola");
 	var new_id = new Date().getTime();
 	var regexp = new ReExp("new_" + association, "g");
 	$(link).parent().before(content.replace(regexp, new_id));

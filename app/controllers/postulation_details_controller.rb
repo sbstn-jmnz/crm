@@ -1,9 +1,16 @@
 class PostulationDetailsController < ApplicationController
 	before_action :set_postulation_detail, only: [:show, :edit, :update, :destroy]
 	layout false
+
 	def new
 		@postulation_detail = PostulationDetail.new
 		@languages = @postulation_detail.languages.build
+	end
+
+	def create
+		@postulation_detail = PostulationDetail.new(postulation_detail_params)
+		@postulation_detail.save
+		redirect_to root_path
 	end
 
 	private
