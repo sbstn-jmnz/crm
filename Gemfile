@@ -21,6 +21,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 #Gemas para bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'font-awesome-sass'
 gem 'autoprefixer-rails'
 #<-- Otras gemas -->
 #Gemas para Devise, ActiveAdmin y CanCan

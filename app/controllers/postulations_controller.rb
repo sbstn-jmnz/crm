@@ -1,6 +1,7 @@
 class PostulationsController < ApplicationController
 	before_action :set_postulation, only: [:show, :edit, :update, :destroy]
-	layout false
+	before_action :authenticate_applicant!
+	
 	def new
 		@postulation = Postulation.new
 		@postulation_details = @postulation.postulation_details.build

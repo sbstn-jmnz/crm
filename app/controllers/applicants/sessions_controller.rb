@@ -1,7 +1,6 @@
 class Applicants::SessionsController < Devise::SessionsController
  before_filter :configure_sign_in_params, only: [:create]
  #protect_from_forgery :except => :destroy 
- layout false
   # GET /resource/sign_in
    #def new
      #super

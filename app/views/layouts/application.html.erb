@@ -6,20 +6,17 @@
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	<%= csrf_meta_tags %>
 </head>
-<style>
-body {
-	background-color: #3F3E40;
-}
-</style>
+
 <body>
-	
-	<div id="main-container" class="container-fluid">
-		<%= render 'layouts/navbar'%>
+	<div class="wrapper">
+		<header>
+			<%= render 'layouts/navbar'%>
+		</header>
+
 		<div class="row">
 			<%= yield %>
- 		</div>
- 		<%= render 'layouts/footer'%>	
+		</div>
+		<%= render 'layouts/footer'%>	
 	</div>
-
 </body>
 </html>
