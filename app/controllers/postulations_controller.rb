@@ -3,18 +3,18 @@ class PostulationsController < ApplicationController
 	before_action :authenticate_applicant!
 	
 	def new
-		@ultima_postulacion_usuario = Postulation.where(applicant_id: current_applicant.id, version_id: 1)
-
+		@ultima_postulacion_usuario = Postulation.where(applicant_id: current_applicant.id, version_id: 1).last
 		##Si el usuario no tiene una postulacion activa para el programa pasa a una nueva postulacion
 		if !@ultima_postulacion_usuario.nil?
 			redirect_to final_step_postulations_path
 		end	
 		@postulation = Postulation.new
-		@postulation_details = @postulation.postulation_details.build
+		@postulation_details = @postulation.build_postulation_detail
 	end
 
 	def create
 		@postulation = Postulation.new(postulation_params)
+		@detail=
 		@postulation.applicant_id = current_applicant.id
 		#Se agrea por defeto una version del programa y un administrador
 		@postulation.version_id = 1
@@ -24,12 +24,20 @@ class PostulationsController < ApplicationController
 	end
 
 	def final_step
-		@ultima_postulacion_usuario = Postulation.last
-		
+		@ultima_postulacion_usuario = Postulation.where(applicant_id: current_applicant.id, version_id: 1).last
+
 	end
 
 	def show
 	end
+
+    def edit
+	end
+
+	 def update
+	 	@postulation.update(postulation_params)
+	 	redirect_to final_step_postulations_path, notice: "Campos actualizados"	 	
+	 end
 
 	private
 		def set_postulation
@@ -37,6 +45,6 @@ class PostulationsController < ApplicationController
 		end
 
 		def postulation_params
-			params.require(:postulation).permit(postulation_details_attributes: [:motivation])
+			params.require(:postulation).permit(postulation_detail_attributes: [:motivation])
 		end
 end

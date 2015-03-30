@@ -1,6 +1,6 @@
 
 <%= form_for(@postulation, :html => {:class => "form-signin"}) do |f| %>
-	<%= f.fields_for :postulation_details do |pd| %>
+	<%= f.fields_for :postulation_detail do |pd| %>
 	<p class="text-justify">Por favor, cuentanos tu motivacion para tomar nuestro programa</p>
 		<%= pd.text_area :motivation, class: "form-control" %>
 	<% end %>

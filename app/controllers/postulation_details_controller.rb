@@ -9,7 +9,7 @@ class PostulationDetailsController < ApplicationController
 	def create
 		@postulation_detail = PostulationDetail.new(postulation_detail_params)
 		@postulation_detail.save
-		redirect_to root_path
+		redirect_to final_step_postulations_path
 	end
 
 	private

@@ -6,13 +6,12 @@
 		<%= current_applicant.name %>
 		<label>E-mail </label>
 		<%= current_applicant.email %>
-
 		<hr>
-
 		<h2>Datos Postulacion</h2>
 		<label>Motivacion </label>
-		<%= @ultima_postulacion_usuario.postulation_details.first.motivation %>
-
+		<%= @ultima_postulacion_usuario.postulation_detail.motivation %>
+		</br>
+		<%= link_to "Edit", edit_postulation_path(@ultima_postulacion_usuario)%>
 		<hr>
 
 		<h2>Lenguajes</h2>
