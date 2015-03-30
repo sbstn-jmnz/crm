@@ -3,10 +3,12 @@
 	<p>
 		<%= f.text_field :name, class: 'form-control', placeholder: 'Idioma' %>
 		<%= f.label :Nivel_Escrito%>
-		<%= f.select :written_level, options_for_select([["Selecciona Nivel", 0],["Basico", "Basico"], ["Intermedio", "Intermedio"], ["Avanzado", "Avanzado"], ["Nativo", "Nativo"]]),{}, {class: 'form-control input-sm'} %>
+		<%= f.select :written_level, ["Selecciona Nivel","Basico","Intermedio","Avanzado","Nativo"],{},{class: 'form-control input-sm'}  %>
 		<%= f.label :Nivel_Hablado %>
-		<%= f.select :spoken_level, options_for_select([["Selecciona Nivel", 0],["Basico", "Basico"], ["Intermedio", "Intermedio"], ["Avanzado", "Avanzado"], ["Nativo", "Nativo"]]),{}, {class: 'form-control input-sm'} %>
+		<%= f.select :spoken_level, ["Selecciona Nivel","Basico","Intermedio","Avanzado","Nativo"],{},{class: 'form-control input-sm'} %>
+		<%= params[:spoken_level]%>
 	</p>
+	
 </div>
 
 

@@ -12,12 +12,15 @@ class PostulationDetailsController < ApplicationController
 		redirect_to final_step_postulations_path
 	end
 
+	def edit
+	end
+	
 	private
 		def set_postulation_detail
 			@postulation_detail = PostulationDetail.find(params[:id])
 		end
 
 		def postulation_detail_params
-			params.require(:postulation_detail).permit(languages_attributes: [:name, :written_level, :spoken_level])
+			params.require(:postulation_detail).permit(languages_attributes: [:id, :name, :written_level, :spoken_level])
 		end
 end
