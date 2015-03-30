@@ -1,10 +1,10 @@
 
-<%= form_for(@postulation) do |f| %>
+<%= form_for(@postulation, :html => {:class => "form-signin"}) do |f| %>
 	<%= f.fields_for :postulation_details do |pd| %>
-		<%= pd.label :motivation %>
-		<%= pd.text_area :motivation %>
+	<p class="text-justify">Por favor, cuentanos tu motivacion para tomar nuestro programa</p>
+		<%= pd.text_area :motivation, class: "form-control" %>
 	<% end %>
-	<div class="actions">
-		<%= f.submit %>
-	</div>
+</br>
+	<button class="btn btn-lg btn-primary btn-block" type="submit">Siguiente paso</button>
+	<button class="btn btn-lg btn-success btn-block" type="submit">Guardar Postulacion</button>
 <% end %>

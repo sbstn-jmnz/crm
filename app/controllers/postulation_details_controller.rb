@@ -1,6 +1,5 @@
 class PostulationDetailsController < ApplicationController
 	before_action :set_postulation_detail, only: [:show, :edit, :update, :destroy]
-	layout false
 
 	def new
 		@postulation_detail = PostulationDetail.new

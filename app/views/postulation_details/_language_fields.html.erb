@@ -1,13 +1,14 @@
+<hr>
 <div class="fields">
 	<p>
-		<%= f.label :name %>
-		<%= f.text_field :name %>
-		<%= f.label :written_level%>
-		<%= f.select :written_level, options_for_select([["Basico", "Basico"], ["Intermedio", "Intermedio"], ["Avanzado", "Avanzado"], ["Nativo", "Nativo"]]) %>
-		<%= f.label :spoken_level %>
-		<%= f.select :spoken_level, options_for_select([["Basico", "Basico"], ["Intermedio", "Intermedio"], ["Avanzado", "Avanzado"], ["Nativo", "Nativo"]]) %>
+		<%= f.text_field :name, class: 'form-control', placeholder: 'Idioma' %>
+		<%= f.label :Nivel_Escrito%>
+		<%= f.select :written_level, options_for_select([["Selecciona Nivel", 0],["Basico", "Basico"], ["Intermedio", "Intermedio"], ["Avanzado", "Avanzado"], ["Nativo", "Nativo"]]),{}, {class: 'form-control input-sm'} %>
+		<%= f.label :Nivel_Hablado %>
+		<%= f.select :spoken_level, options_for_select([["Selecciona Nivel", 0],["Basico", "Basico"], ["Intermedio", "Intermedio"], ["Avanzado", "Avanzado"], ["Nativo", "Nativo"]]),{}, {class: 'form-control input-sm'} %>
 	</p>
 </div>
+
 
 <script >
 	function add_fields(link, association, content){

@@ -1,39 +1,44 @@
 <nav class="navbar navbar-default navbar-static-top" role"navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="../" class="navbar-brand">Universidad</a>
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Carreras <span class="caret"></span></a>
-              <ul class="dropdown-menu" aria-labelledby="themes">
-                <li><a href="../default/">Default</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="../help/">Sedes</a>
-            </li>
-            <li>
-              <a href="http://news.bootswatch.com">Alumnos</a>
-            </li><li>
-              <a href="http://news.bootswatch.com">Profesores</a>
-            </li>
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Postgrados <span class="caret"></span></a>
-              <ul class="dropdown-menu" aria-labelledby="download">
-                <li><a href="./bootstrap.min.css">bootstrap.min.css</a></li>
-              </ul>
-            </li>
+  <div class="container">
+    <div class="navbar-header">
+      <a href="../" class="navbar-brand">Universidad</a>
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Carreras <span class="caret"></span></a>
+          <ul class="dropdown-menu" aria-labelledby="themes">
+            <li><a href="../default/">Default</a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to Admin, admin_user_session_path%></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+        </li>
+        <li>
+          <a href="../help/">Sedes</a>
+        </li>
+        <li>
+          <a href="http://news.bootswatch.com">Alumnos</a>
+        </li><li>
+        <a href="http://news.bootswatch.com">Profesores</a>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Postgrados <span class="caret"></span></a>
+        <ul class="dropdown-menu" aria-labelledby="download">
+          <li><a href="./bootstrap.min.css">bootstrap.min.css</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if applicant_signed_in? %>
+      <p class="navbar-text"> Hola <%= current_applicant.name %>, Tu correo es: <%= current_applicant.email %> | <%= link_to("Log out", destroy_applicant_session_path, method: :delete) %></p>       
+      <% else %>
+      <p class="navbar-text"><%= link_to "Sign in", new_applicant_session_path %></p>
+      <% end %>
+      <li><%= link_to Admin, admin_user_session_path%></li>
+    </ul>
+  </div>
+</div>
+</nav>

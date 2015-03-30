@@ -9,7 +9,12 @@ Rails.application.routes.draw do
   devise_for :applicants , controllers: { sessions: "applicants/sessions", registrations: "applicants/registrations" }## aca se agregan los controladores que se modificaron, 
 
   resources :programs
-  resources :postulations
+  resources :postulations do
+    collection do
+      get 'final_step'
+    end
+  end
+  #get 'postulations/final_step' => 'postulation#final_step', as: "final_step"
   resources :postulation_details
   root 'statics#index'
   

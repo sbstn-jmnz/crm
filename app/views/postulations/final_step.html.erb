@@ -1,0 +1,22 @@
+<div class='container'>
+	<div class='jumbotron'>
+
+		<h2>Datos Personales</h2>
+		<label>Nombre </label>
+		<%= current_applicant.name %>
+		<label>E-mail </label>
+		<%= current_applicant.email %>
+
+		<hr>
+
+		<h2>Datos Postulacion</h2>
+		<label>Motivacion </label>
+		<%= @ultima_postulacion_usuario.postulation_details.first.motivation %>
+
+		<hr>
+
+		<h2>Lenguajes</h2>
+
+
+	</div>
+</div>
