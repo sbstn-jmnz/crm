@@ -85,3 +85,25 @@ code {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.pasos, .pasos2, .pasos3, .pasos4{
+margin-right: 10px;
+margin:5px 0;
+overflow:hidden;
+height:56px;
+background-image:url(Ruyarpng.png);
+background-size: 1550px 400px;
+
+
+}
+.pasos2{
+background-position: 0 -56px;
+}
+
+.pasos3{
+background-position: 0 -120px;
+}
+
+.pasos4{
+background-position: 0 -178px;
+}
