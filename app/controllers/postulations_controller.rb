@@ -14,13 +14,12 @@ class PostulationsController < ApplicationController
 
 	def create
 		@postulation = Postulation.new(postulation_params)
-		@detail=
 		@postulation.applicant_id = current_applicant.id
 		#Se agrea por defeto una version del programa y un administrador
 		@postulation.version_id = 1
 		@postulation.admin_user_id = 1
 		@postulation.save
-		redirect_to new_postulation_detail_path
+		redirect_to :controller => "postulation_details", :action => "new", :id => @postulation.postulation_detail.id 
 	end
 
 	def final_step

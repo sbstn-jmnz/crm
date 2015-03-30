@@ -15,7 +15,13 @@
 		<hr>
 
 		<h2>Lenguajes</h2>
-
-
+		<% @ultima_postulacion_usuario.postulation_detail.languages.each do |l| %>
+			<label>Nombre Idioma</label>
+			<%= l.name %>
+			<label>Escrito</label>
+			<%= l.written_level %>
+			<label>Hablado</label>
+			<%= l.spoken_level %>
+		<% end %>
 	</div>
 </div>
