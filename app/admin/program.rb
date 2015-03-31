@@ -1,18 +1,11 @@
 ActiveAdmin.register Program do
-menu label: "Programas"
-
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
+  config.comments = false
+  menu label: "Programas"
   permit_params :title, :description
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if resource.something?
-  #   permitted
-  # end
-
+  sidebar "Versiones", only: [:show, :edit] do
+    ul do
+      li link_to "Versiones", admin_program_versions_path(program)
+    end
+  end
 
 end

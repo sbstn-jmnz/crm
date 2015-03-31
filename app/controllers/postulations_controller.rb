@@ -18,7 +18,8 @@ class PostulationsController < ApplicationController
 		#Se agrea por defeto una version del programa y un administrador
 		@postulation.version_id = 1
 		@postulation.admin_user_id = 1
-		
+		@postulation.condition_id = 4
+
 		@postulation.save
 		redirect_to :controller => "postulation_details", :action => "new", :id => @postulation.postulation_detail.id 
 	end

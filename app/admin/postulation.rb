@@ -1,19 +1,19 @@
 ActiveAdmin.register Postulation do
+	menu false
+	controller do
+		nested_belongs_to :program, :version
+	end
+	permit_params :name, :email, :condition_id
+	
 
-
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if resource.something?
-  #   permitted
-  # end
-
-
-
+	batch_action :flag, form: {
+		type: %w[Offensive Spam Other],
+		reason: :text,
+		notes:  :textarea,
+		hide:   :checkbox,
+		date:   :datepicker
+		} do |ids, inputs|
+  	# inputs is a hash of all the form fields you requested
+  	redirect_to request.referer, notice: [ids, inputs].to_s
+	end
 end

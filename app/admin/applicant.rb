@@ -1,6 +1,6 @@
 ActiveAdmin.register Applicant do
 menu label: "Postulantes"
-  permit_params :name, :email
+  permit_params :name, :email, :condition
 
   index do
    selectable_column
@@ -8,6 +8,7 @@ menu label: "Postulantes"
    link_to nombre.name, admin_applicant_path(nombre)
         end
     column :email
+    column :condition
     column :sign_in_count
     column :created_at
     actions

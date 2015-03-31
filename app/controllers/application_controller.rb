@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   def do_common_stuff
     @controllerName = self.class.name.sub("Controller", "").singularize
     @acctionName = params["action"].to_s
+    session[:return_to] ||= request.referer
   end
   
   #Donde lo manda si entra a un lugar no authorizado

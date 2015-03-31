@@ -8,6 +8,15 @@ Rails.application.routes.draw do
 
   devise_for :applicants , controllers: { sessions: "applicants/sessions", registrations: "applicants/registrations" }## aca se agregan los controladores que se modificaron, 
 
+  namespace :admin do
+    resources :programs do
+      resources :versions do
+        resources :postulations
+      end
+    end
+  end
+
+
   resources :programs
   resources :postulations do
     collection do

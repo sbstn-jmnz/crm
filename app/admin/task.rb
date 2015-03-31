@@ -51,6 +51,7 @@ ActiveAdmin.register Task do
   column :is_done
   column :created_at
   actions
+    
   end
 
   filter :postulation_id, as: :select, collection: proc{(Postulation.all).map{|c|[c.admin_user_id,c.id]}}
