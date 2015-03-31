@@ -91,7 +91,7 @@ margin-right: 10px;
 margin:5px 0;
 overflow:hidden;
 height:56px;
-background-image:url(Ruyarpng.png);
+background-image:url(Ruyar.png);
 background-size: 1550px 400px;
 
 
@@ -106,4 +106,14 @@ background-position: 0 -120px;
 
 .pasos4{
 background-position: 0 -178px;
+}
+
+body{
+  background: url('fondo.jpg');
+  background-size: 1550px 800px;
+  background-repeat: no-repeat;
+}
+
+.jumbotron{
+  background-color: rgba(255, 255, 255, 0.3);
 }
