@@ -1,7 +1,7 @@
 ActiveAdmin.register Condition do
    permit_params :name, :description, :type
    menu label: "Estados"
-   #config.comments = false
+   config.comments = false
 index do
     column 'Nombre', :name
     column 'Description', :description

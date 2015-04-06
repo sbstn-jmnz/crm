@@ -1,4 +1,5 @@
 ActiveAdmin.register Task do
+  menu false
   permit_params :postulation_id, :admin_user_id, :title, :due_date, :is_done
   menu label: "Tareas"
   

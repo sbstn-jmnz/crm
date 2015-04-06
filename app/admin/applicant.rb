@@ -1,5 +1,6 @@
 ActiveAdmin.register Applicant do
 menu label: "Postulantes"
+config.comments = false
   permit_params :name, :email, :condition
 
   index do
