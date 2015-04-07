@@ -3,6 +3,22 @@ ActiveAdmin.register Postulation do
 	permit_params :name, :email, :condition_id
 	config.comments = false
 
+	controller do
+    nested_belongs_to :program, :version
+  	end
+
+	# controller do 
+	# 	def index
+	# 	@postulations = Postulation.all	
+	# 	end
+	# end
+
+	 # collection_action :index, method: :get do
+	 # 	@postulations = Postulation.all
+	 # end
+
+
+
 	batch_action :flag, form: {
 		reason: :text,
 		notes:  :textarea,	
