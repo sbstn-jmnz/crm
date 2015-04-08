@@ -2,7 +2,7 @@ ActiveAdmin.register Version do
   config.comments = false
   belongs_to :program
   config.comments = false
-  permit_params :program_id, :supply, :starting_date, :ending_date, :condition_id
+  permit_params :name, :program_id, :supply, :starting_date, :ending_date, :condition_id
 
   sidebar "Versiones", only: [:show, :edit] do
     ul do
@@ -19,7 +19,7 @@ index do
   	column "Nombre", :version do |v|
       #hay que agregar el campo title a la tabla version. esta linea quedaria
       # link_to version.title,...
-  		link_to v.program.title, admin_program_version_path(program,v)
+  		link_to v.name, admin_program_version_path(program,v)
   	end
   	column "Total de Postulaciones", :version do |v|
   		link_to v.postulations.count,  admin_program_version_postulations_path(program,v)
