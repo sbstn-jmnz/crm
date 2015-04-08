@@ -1,0 +1,15 @@
+ActiveAdmin.register Show do
+sidebar "Versiones", only: [:show, :edit] do
+	ul do
+		li link_to "Postulaciones", admin_program_version_postulations_path(params[:program_id],params[:id])
+	end
+end
+
+table_for assigns[:postulations] do
+	
+	column "Postulante", :applicant_name do |p|
+		p.applicant.name
+	end
+end
+
+end
