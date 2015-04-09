@@ -15,7 +15,7 @@ class PostulationsController < ApplicationController
 	def create
 		@postulation = Postulation.new(postulation_params)
 		@postulation.applicant_id = current_applicant.id
-		#Se agrea por defeto una version del programa y un administrador
+		#Se agrea por defecto una version del programa y un administrador
 		@postulation.version_id = 1
 		@postulation.admin_user_id = 1
 		@postulation.condition_id = 4

@@ -63,7 +63,13 @@ ActiveAdmin.register Postulation do
 	    	asunto: :text,
 	    	texto:  :textarea,	
 	    	} do |ids, inputs|
-  	# inputs is a hash of all the form fields you requested
-  	redirect_to request.referer, notice: [ids, inputs].to_s
+          mails = Array.new
+          ids.each do |id|
+            mails << Postulation.find_by(id: id).applicant.email
+            mail = Postulation.find_by(id: id).applicant.email
+            AdminMailer.batch_mail(mail, inputs[:asunto], inputs[:texto]).deliver_later
+          end
+      # inputs is a hash of all the form fields you requested
+  	redirect_to request.referer, notice: "Correos enviados a " + [mails].to_s
   end
 end
