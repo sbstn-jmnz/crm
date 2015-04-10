@@ -1,8 +1,33 @@
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-<%= csrf_meta_tags %>
-<h1>Applicants#index</h1>
-<p>Find me in app/views/applicants/index.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Programs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Correo</th>
+      <th>Telefono</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @applicants.each do |applicant| %>
+      <tr>
+        <td><%= applicant.name %></td>
+        <td><%= applicant.last_name %></td>
+        <td><%= applicant.email %></td>
+        <td><%= applicant.phone %></td>
+        <td><%= link_to 'Show', applicant %></td>
+        <td><%= link_to 'Edit', edit_applicant_path(applicant) %></td>
+        <td><%= link_to 'Destroy', applicant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <br>
-<% if applicant_signed_in? %>
- <%= link_to 'Sign Out', destroy_applicant_session_path, method: :delete %>
-<% end %>
+
+<%= link_to 'New Program', new_applicant_path %>

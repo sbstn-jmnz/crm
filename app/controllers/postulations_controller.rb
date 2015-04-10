@@ -44,6 +44,6 @@ class PostulationsController < ApplicationController
 		end
 
 		def postulation_params
-			params.require(:postulation).permit(postulation_detail_attributes: [:id, :motivation])
+			params.require(:postulation).permit(:text, postulation_detail_attributes: [:id, :motivation])
 		end
 end

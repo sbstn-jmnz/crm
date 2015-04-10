@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  devise_for :applicants , controllers: { sessions: "applicants/sessions", registrations: "applicants/registrations" }## aca se agregan los controladores que se modificaron, 
+  devise_for :applicants, controllers: { sessions: "applicants/sessions", registrations: "applicants/registrations" }## aca se agregan los controladores que se modificaron, 
 
   namespace :admin do
     resources :programs do
@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
 end
 
+resources :applicants
 resources :programs
 resources :postulations do
   collection do

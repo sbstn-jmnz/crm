@@ -1,0 +1,19 @@
+<%= bootstrap_form_for(@applicant, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-3") do |f| %>
+<% if @applicant.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@applicant.errors.count, "error") %> prohibited this applicant from being saved:</h2>
+  <ul>
+    <% @applicant.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<%= f.text_field :name, label: "Nombre Completo", help: "Primer Nombre"  %>
+<%= f.text_field :last_name, hide_label: true, help: "Apellido" %>
+<%= f.email_field :email, label: "Correo Electrónico",placeholder: "ex:myname@example.com", icon: "envelope"%>
+<%= f.telephone_field :phone, label: "Teléfono", help: "022345678 | 0985032654", title: "ej. 022345678 | 0985032654 ", icon: "phone-alt" %> 
+<%= f.form_group do %>
+<%= f.submit "Enviar", class: "btn btn-primary" %>
+<% end %>
+<% end %>
