@@ -1,5 +1,5 @@
 class ApplicantsController < ApplicationController
- before_filter :authenticate_applicant!, :only => [:index, :new]
+ #before_filter :authenticate_applicant!, :only => [:index, :new]
  before_action :set_applicant, only: [:show, :edit, :update, :destroy]
   # GET /applicants
   # GET /applicants.json
