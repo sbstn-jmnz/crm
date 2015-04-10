@@ -32,6 +32,8 @@ gem 'cancancan', '~> 1.10'
 gem 'active_admin_importable'
 #gema para MCE
 gem 'tinymce-rails'
+#heroku
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
