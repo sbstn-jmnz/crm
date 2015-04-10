@@ -78,7 +78,7 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
+Production:
   <<: *default
   database: crm_production
   username: crm
