@@ -40,7 +40,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   #Configuracion para devise. Actio  mailes se conecta por fuera de la app rails
-  config.action_mailer.default_url_options = { host: 'vast-harbor-7725.heroku.com'}
+  config.action_mailer.default_url_options = { host: 'vast-harbor-7725.herokuapp.com'}
   config.action_mailer.smtp_settings = {
     :address   => "smtp.mandrillapp.com",
     :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
