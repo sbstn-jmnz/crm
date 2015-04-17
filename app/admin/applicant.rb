@@ -1,7 +1,7 @@
 ActiveAdmin.register Applicant do
 menu label: "Postulantes"
 config.comments = false
-  permit_params :name, :email, :condition
+  permit_params :name, :email, :condition_id
 
   index do
    selectable_column
@@ -13,7 +13,7 @@ config.comments = false
     column :sign_in_count
     column :created_at
     actions
-    #:input_html => {:rows => 5, :cols => 50, :class => "tinymce"}
+    
   end
 
 filter :email

@@ -1,6 +1,6 @@
 class PostulationsController < ApplicationController
 	before_action :set_postulation, only: [:show, :edit, :update, :destroy]
-	before_action :authenticate_applicant!
+	
 	
 	def new
 		@ultima_postulacion_usuario = Postulation.where(applicant_id: current_applicant.id, version_id: 1).last

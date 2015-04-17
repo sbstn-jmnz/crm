@@ -1,7 +1,12 @@
 ActiveAdmin.register Task do
   menu false
-  permit_params :postulation_id, :admin_user_id, :title, :due_date, :is_done
+  includes :applicant, :admin_user, :postulation
+  permit_params :postulation_id, :admin_user_id, :title, :due_date, :is_done, :program_id, :version_id, :postulation_id 
   menu label: "Tareas"
+
+  controller do    
+    nested_belongs_to :program, :version, :postulation
+  end
   
   scope :all, :default => true
   scope :due_this_week do |tasks|
@@ -42,18 +47,20 @@ ActiveAdmin.register Task do
     end
   end
 
- index do
- selectable_column
-  column :title do |title|
-    link_to title.title, admin_task_path(title)
-     end
-  column :admin_user    
-  column :applicant
-  column :is_done
-  column :created_at
-  actions
+ # index do
+ # selectable_column
+ #  column :title do |title|
+ #    link_to title.title, admin_task_path(title)
+ #     end
+ #  column :admin_user    
+ #  column :applicant do |t|
+ #    t.postulation.applicant.name
+ #  end
+ #  column :is_done
+ #  column :created_at
+ #  actions
     
-  end
+ #  end
 
   filter :postulation_id, as: :select, collection: proc{(Postulation.all).map{|c|[c.admin_user_id,c.id]}}
 end

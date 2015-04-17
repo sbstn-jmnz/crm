@@ -1,7 +1,9 @@
 class Task < ActiveRecord::Base
   belongs_to :postulation
-  belongs_to :admin_user
+  has_one :admin_user, through: :postulation 
+  has_one :applicant, through: :postulation
  
-  validates :title, :applicant_id, :admin_user_id, :presence => true
+  validates :title, :presence => true
   validates :is_done, :inclusion => { :in => [true, false] }
+  accepts_nested_attributes_for :postulation
 end

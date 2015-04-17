@@ -32,11 +32,6 @@
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <% if applicant_signed_in? %>
-      <p class="navbar-text"> Hola <%= current_applicant.name %>, Tu correo es: <%= current_applicant.email %> | <%= link_to("Log out", destroy_applicant_session_path, method: :delete) %></p>       
-      <% else %>
-      <p class="navbar-text"><%= link_to "Sign in", new_applicant_session_path %></p>
-      <% end %>
       <li><%= link_to Admin, admin_user_session_path%></li>
     </ul>
   </div>
