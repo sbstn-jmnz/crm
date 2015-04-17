@@ -1,5 +1,6 @@
 class ApplicantsController < ApplicationController
  #before_filter :authenticate_applicant!, :only => [:index, :new]
+ protect_from_forgery except: [:create, :new]
  before_action :set_applicant, only: [:show, :edit, :update, :destroy]
   # GET /applicants
   # GET /applicants.json
@@ -24,7 +25,13 @@ class ApplicantsController < ApplicationController
   # POST /applicants
   # POST /applicants.json
   def create
+    #Crea un nuevo postulante pero todavia no esta en a bdd
     @applicant = Applicant.new(applicant_params)
+    #Buscar si exite el postulante
+    if Applicant.find_by(email: params[:email])
+    puts Applicant.find_by(email: params[:email]).class
+            
+    end    
 
     respond_to do |format|
       if @applicant.save
@@ -62,6 +69,10 @@ class ApplicantsController < ApplicationController
   end
 
   private
+
+    def duplicated_postulation
+      return false
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_applicant
       @applicant = Applicant.find(params[:id])
@@ -69,6 +80,6 @@ class ApplicantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def applicant_params
-      params.require(:applicant).permit(:name, :last_name, :phone)
+      params.require(:applicant).permit(:name, :last_name, :phone, :email)
     end
 end

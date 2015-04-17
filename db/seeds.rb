@@ -15,16 +15,16 @@ conditions.each do |name, description, type|
 	Condition.create!(name: name, description: description, type: type)
 end
 
-applicants = [['sbstn','sbstn@jmnz.cl','password'],
-['ruyard','ruyard@fuster.cl', 'password'],
-['maca','maca@standen.cl','password']]
+applicants = [['sbstn','jmnz','sbstn@jmnz.cl','password'],
+['ruyard','fuster','ruyard@fuster.cl', 'password'],
+['maca','standen','maca@standen.cl','password']]
 
 Applicant.delete_all
 conditions= Condition.where("type = 'ApplicantCondition'")
-applicants.each do |name, email, password|
+applicants.each do |name, last_name, email, password|
 n = 0
 condition_id = conditions.offset(n).first.id
-	Applicant.create!(name: name, email: email, password: password, condition_id: condition_id)
+	Applicant.create!(name: name, last_name: last_name, email: email, condition_id: condition_id)
 n = n+1
 end
 
